@@ -14,7 +14,8 @@ def upload_file(request):
             return HttpResponse(f"The file '{user.document}' uploaded by the user {user.pk} is uploaded successfully.")
     else:
         form = UploadFileForm()
-    return render(request, 'administration/upload.html', {'form': form})
+        files = User.objects.all()
+    return render(request, 'administration/upload.html', {'form': form,'files':files})
 
 def view_files(request):
     files = User.objects.all()

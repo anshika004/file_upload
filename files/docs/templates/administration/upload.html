@@ -18,7 +18,7 @@
     <h2>Uploaded Files</h2>
     <ul>
         {% for file in files %}
-            <li><a href="{{ file.file.url }}">{{ file.file.name }}</a></li>
+            <li><a href="{{ file.document.url }}">{{ file.document.name }}</a></li>
         {% empty %}
             <li>No files uploaded yet.</li>
         {% endfor %}
