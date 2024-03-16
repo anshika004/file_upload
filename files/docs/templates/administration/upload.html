@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Django File Upload</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>Upload File</h2>
+    <form action="{% url 'list'%}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <p>{{ form.file }}</p>
+        <p><input type="submit" value="Upload" /></p>
+    </form>
+
+    <h2>Uploaded Files</h2>
+    <ul>
+        {% for file in files %}
+            <li><a href="{{ file.file.url }}">{{ file.file.name }}</a></li>
+        {% empty %}
+            <li>No files uploaded yet.</li>
+        {% endfor %}
+    </ul>
+
+    <!-- Uncomment the following line if you have a separate JavaScript file -->
+    <!-- <script src="index.js"></script> -->
+</body>
+</html>
