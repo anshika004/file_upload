@@ -18,9 +18,15 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path,include
-from docs.views import upload_file
+from docs import views as docs_views
+from register import views as reg_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('list/',upload_file,name='list')
+    path('register/', include('register.urls')),
+    # path('docs/', include('docs.urls')),
+    path('list/',docs_views.upload_file,name='list'),
+    path('login/',reg_views.register_index, name='reg_index'),
+    path('contact/',docs_views.index,)
+
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

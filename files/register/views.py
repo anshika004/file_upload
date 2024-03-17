@@ -7,7 +7,7 @@ from django.http import HttpResponse
 
 # password of Anshika user is anshi@000
 # Create your views here.
-def index(request):
+def register_index(request):
     # print(request.user)
     if request.user.is_anonymous:
         return redirect("/login")
